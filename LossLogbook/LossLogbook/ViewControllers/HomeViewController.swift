@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     var coordinator: BaseCoordinatorFlow?
     
@@ -29,6 +29,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        
+        NetworkManager().fetchEquiment { result in
+            switch result {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure.description)
+            }
+        }
     }
     
     private func setup() {
@@ -50,7 +59,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 15

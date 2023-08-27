@@ -31,7 +31,7 @@ class BaseCoordinator: Coordinator {
     }
 
     private func showMainAppFlow() {
-        let initialViewController = ViewController()
+        let initialViewController = HomeViewController()
         initialViewController.coordinator = self
         navigationController.setViewControllers([initialViewController], animated: true)
     }

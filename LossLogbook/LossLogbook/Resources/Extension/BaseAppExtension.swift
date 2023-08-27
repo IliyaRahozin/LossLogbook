@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  Extension.swift
 //  LossLogbook
 //
 //  Created by Illia Rahozin on 22.08.2023.
