@@ -14,6 +14,8 @@ class DetailViewController<T: Codable & TableRepresentable>: UIViewController, U
     var coordinator: DetailCoordinatorFlow?
     
     let data: [T]
+    var filteredData: [EquipmentOryxJSON]?
+    var isFiltering: Bool = false
     
     private lazy var infoTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -44,14 +46,74 @@ class DetailViewController<T: Codable & TableRepresentable>: UIViewController, U
         infoTableView.dataSource = self
         infoTableView.delegate   = self
         
+        configureTitle()
+        configureNavBar()
+        
         view.addSubview(infoTableView)
         infoTableView.fillSafeView(view)
     }
     
+    private func configureTitle(with text: String? = "All") {
+        if let _ = data as? [EquipmentOryxJSON], let text = text {
+            title = "Oryx - \(text)"
+        } else if let data = data.first, let day = data["day"] {
+            title =  "Day - \(day)"
+        }
+    }
+    
+    private func configureNavBar() {
+        if let _ = data as? [EquipmentOryxJSON] {
+            let popoverButton = UIBarButtonItem(title: "Type", style: .plain, target: self, action: #selector(showPopover))
+                    navigationItem.rightBarButtonItem = popoverButton
+        } else {
+            navigationItem.rightBarButtonItem = .none
+        }
+    }
+    
+    @objc private func showPopover() {
+        let popoverContentVC = PopoverContentViewController()
+
+        popoverContentVC.selectedEquipmentType = { [weak self] equipmentType in
+            self?.handleSelectedEquipmentType(equipmentType)
+        }
+
+        popoverContentVC.modalPresentationStyle = .popover
+        
+        if let popover = popoverContentVC.popoverPresentationController {
+            popover.barButtonItem = navigationItem.rightBarButtonItem
+            present(popoverContentVC, animated: true, completion: nil)
+        }
+    }
+    
+    private func handleSelectedEquipmentType(_ equipmentType: EquipmentUa?) {
+        if let data = data as? [EquipmentOryxJSON] {
+            if let equipmentType = equipmentType {
+                let filteredData = data.filter { equipment in
+                    return equipment.equipmentUa == equipmentType
+                }
+                self.filteredData = filteredData
+                isFiltering = true
+                configureTitle(with: equipmentType.rawValue)
+                infoTableView.reloadData()
+            } else {
+                self.filteredData = nil
+                isFiltering = false
+                configureTitle()
+                infoTableView.reloadData()
+            }
+            
+        }
+    }
+
+    
     // MARK: - CONFIGURE
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let data = data as? [EquipmentOryxJSON] {
-            return data.count
+            if isFiltering, let filteredData = filteredData {
+                return filteredData.count
+            } else {
+                return data.count
+            }
         } else if let data = data.first {
             return data.propertyList.count
         } else {
@@ -64,8 +126,13 @@ class DetailViewController<T: Codable & TableRepresentable>: UIViewController, U
         if let fullEquipmentData = data as? [EquipmentOryxJSON] {
             let cell = tableView.dequeueReusableCell(withIdentifier: OryxTableViewCell.identifier, for: indexPath) as! OryxTableViewCell
             
-            let data = fullEquipmentData[indexPath.row]
-            cell.configure(img: data.equipmentUa.image, info: data.getDetailInfo())
+            if let filteredData = filteredData, isFiltering  {
+                let data = filteredData [indexPath.row]
+                cell.configure(img: data.equipmentUa.image, info: data.getDetailInfo())
+            } else {
+                let data = fullEquipmentData [indexPath.row]
+                cell.configure(img: data.equipmentUa.image, info: data.getDetailInfo())
+            }
             
             return cell
         } else {

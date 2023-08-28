@@ -10,7 +10,10 @@ import Foundation
 class Model {
     static let shared = Model()
     
-//    private var selectedDate:
+    private var selectedDate: Date? 
+    private var startDate: Date?
+    private var lastDate: Date?
+    
     
     private var personnelData: [PersonnelJSON] = []
     private var equipmentOryxData: [EquipmentOryxJSON] = []
@@ -35,16 +38,32 @@ class Model {
         }
     }
     
-    func getPersonnelData() -> [PersonnelJSON] {
-        return personnelData
+    func setSelectedDate(with date: Date) {
+        selectedDate = date
+    }
+    
+    func getSelectedDate() -> Date? {
+        return selectedDate
+    }
+    
+    func getStartDate() -> Date? {
+        return startDate
+    }
+    
+    func getLastDate() -> Date? {
+        return lastDate
+    }
+    
+    func getPersonnelData(byDate date: Date?) -> PersonnelJSON? {
+        return personnelData.first { $0.date == date?.toString() }
     }
     
     func getequipmentOryxData() -> [EquipmentOryxJSON] {
         return equipmentOryxData
     }
     
-    func getEquimpentData() -> [EquipmentJSON] {
-        return equimpentData
+    func getEquimpentData(byDate date: Date?) -> EquipmentJSON? {
+        return equimpentData.first { $0.date == date?.toString() }
     }
     
     func loadData(completion: @escaping (Bool) -> Void) {
@@ -84,8 +103,30 @@ class Model {
 
         }
 
-        dispatchGroup.notify(queue: .main) {
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            self?.setDateLimits()
             completion(true)
+        }
+    }
+}
+
+
+extension Model {
+    private func setDateLimits() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let firstData = personnelData.first
+        let lastData  = personnelData.last
+        
+        if let startStr = firstData?.date, let endStr = lastData?.date {
+            let startDate = dateFormatter.date(from: startStr)
+            let endDate   = dateFormatter.date(from: endStr)
+        
+            self.startDate = startDate
+            self.lastDate  = endDate
+            self.selectedDate = endDate
+            
         }
     }
 }

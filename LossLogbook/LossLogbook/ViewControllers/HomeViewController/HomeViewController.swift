@@ -15,6 +15,8 @@ class HomeViewController: UICollectionViewController {
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        datePicker.minimumDate = Model.shared.getStartDate()
+        datePicker.maximumDate = Model.shared.getLastDate()
         
         return datePicker
     }()
@@ -32,34 +34,6 @@ class HomeViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
-        NetworkManager().fetchEquiment { result in
-            switch result {
-            case .success(let success):
-                Model.shared.setData(storage: .Equimpent, data: success)
-            case .failure(let failure):
-                print(failure.description)
-            }
-        }
-        
-        NetworkManager().fetchEquimentOryx { result in
-            switch result {
-            case .success(let success):
-                Model.shared.setData(storage: .EquipmentOryx, data: success)
-            case .failure(let failure):
-                print(failure.description)
-            }
-        }
-        
-        NetworkManager().fetchEquiment { result in
-            switch result {
-            case .success(let success):
-                Model.shared.setData(storage: .Equimpent, data: success)
-            case .failure(let failure):
-                print(failure.description)
-            }
-        }
-        
     }
     
     private func setup() {
@@ -75,8 +49,7 @@ class HomeViewController: UICollectionViewController {
     }
     
     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        let selectedDate = sender.date
-        print("Selected date:", selectedDate)
+        Model.shared.setSelectedDate(with: sender.date)
     }
 
     

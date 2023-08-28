@@ -59,17 +59,19 @@ extension BaseCoordinator: BaseCoordinatorFlow {
     func showDetail(direction: HomeCollectionData) {
         switch direction {
         case .Personnel:
-            let data = Model.shared.getPersonnelData()
-            let detailCoordinator = DetailCoordinator<PersonnelJSON>(navigationController: navigationController, data: data)
-            detailCoordinator.start()
+            if let data = Model.shared.getPersonnelData(byDate: Model.shared.getSelectedDate()) {
+                let detailCoordinator = DetailCoordinator<PersonnelJSON>(navigationController: navigationController, data: data)
+                detailCoordinator.start()
+            }
         case .EquipmentOryx:
             let data = Model.shared.getequipmentOryxData()
             let detailCoordinator = DetailCoordinator(navigationController: navigationController, data: data)
             detailCoordinator.start()
         case .Equimpent:
-            let data = Model.shared.getEquimpentData()
-            let detailCoordinator = DetailCoordinator(navigationController: navigationController, data: data)
-            detailCoordinator.start()
+            if let data = Model.shared.getEquimpentData(byDate: Model.shared.getSelectedDate()) {
+                let detailCoordinator = DetailCoordinator(navigationController: navigationController, data: data)
+                detailCoordinator.start()
+            }
         case .Donate:
             showDonate()
         }

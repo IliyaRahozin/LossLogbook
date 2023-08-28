@@ -10,9 +10,14 @@ import Foundation
 
 protocol TableRepresentable {
     var propertyList: [(key: String, value: String?)] { get }
+    subscript(key: String) -> String? { get }
 }
 
 extension TableRepresentable {
+    subscript(key: String) -> String? {
+        return propertyList.first { $0.key == key }?.value
+    }
+    
     var propertyList: [(key: String, value: String?)] {
         var properties: [(key: String, value: String?)] = []
         let mirror = Mirror(reflecting: self)

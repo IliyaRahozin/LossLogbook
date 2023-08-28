@@ -31,6 +31,7 @@
 		D0ADC7DF2A9BC64C00BB6AF8 /* DetailConfgiurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7DE2A9BC64C00BB6AF8 /* DetailConfgiurator.swift */; };
 		D0ADC7E12A9BDC4200BB6AF8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7E02A9BDC4200BB6AF8 /* Model.swift */; };
 		D0ADC7E32A9BDCEC00BB6AF8 /* OryxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7E22A9BDCEC00BB6AF8 /* OryxTableViewCell.swift */; };
+		D0ADC7E62A9C3ED600BB6AF8 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7E52A9C3ED600BB6AF8 /* PopOverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		D0ADC7DE2A9BC64C00BB6AF8 /* DetailConfgiurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConfgiurator.swift; sourceTree = "<group>"; };
 		D0ADC7E02A9BDC4200BB6AF8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D0ADC7E22A9BDCEC00BB6AF8 /* OryxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OryxTableViewCell.swift; sourceTree = "<group>"; };
+		D0ADC7E52A9C3ED600BB6AF8 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				D0ADC7AC2A95656400BB6AF8 /* SplashScreen */,
 				D0ADC7D82A9B97CE00BB6AF8 /* HomeViewController */,
 				D0ADC7DB2A9BA6F900BB6AF8 /* DetailViewController */,
+				D0ADC7E52A9C3ED600BB6AF8 /* PopOverViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				D0ADC7DF2A9BC64C00BB6AF8 /* DetailConfgiurator.swift in Sources */,
 				D0ADC78F2A95257B00BB6AF8 /* SceneDelegate.swift in Sources */,
 				D0ADC7AB2A9556CC00BB6AF8 /* BaseAppExtension.swift in Sources */,
+				D0ADC7E62A9C3ED600BB6AF8 /* PopOverViewController.swift in Sources */,
 				D0ADC7E12A9BDC4200BB6AF8 /* Model.swift in Sources */,
 				D0ADC7B82A9572D000BB6AF8 /* BaseCoordinator.swift in Sources */,
 				D0ADC7AE2A95659000BB6AF8 /* SplashScreenViewController.swift in Sources */,

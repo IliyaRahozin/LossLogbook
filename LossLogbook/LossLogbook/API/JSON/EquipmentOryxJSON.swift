@@ -34,7 +34,7 @@ struct EquipmentOryxJSON: Codable, TableRepresentable {
     }
 }
 
-enum EquipmentUa: String, Codable {
+enum EquipmentUa: String, Codable, CaseIterable {
     case aircrafts = "Aircrafts"
     case antiAircraftWarfareSystems = "Anti-aircraft Warfare Systems"
     case armouredPersonnelCarriers = "Armoured Personnel Carriers"

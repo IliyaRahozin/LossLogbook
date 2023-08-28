@@ -21,6 +21,11 @@ class DetailCoordinator<T: Codable & TableRepresentable>: Coordinator {
         self.navigationController = navigationController
         self.data = data
     }
+    
+    init(navigationController: UINavigationController, data: T) {
+        self.navigationController = navigationController
+        self.data = [data]
+    }
 
     func start() {
         let detailViewController = DetailViewController(data: data)
