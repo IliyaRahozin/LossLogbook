@@ -83,6 +83,7 @@ class NetworkManager {
     // MARK: - PROPERTIES
     private let networkAdapter: NetworkAdapter
     
+    
     init(networkAdapter: NetworkAdapter = URLSessionNetworkAdapter()) {
         self.networkAdapter = networkAdapter
     }
@@ -119,18 +120,17 @@ extension NetworkManager: BasicNetworkManagerFetchers {
         self.fetchData(defaultEndpoint: .equipment) { (result: Result<[EquipmentJSON], NetworkError>) in
             switch result {
             case .success(let mainEquipmentData):
-                print("Fetched mainEquipmentData: \(mainEquipmentData)")
 
                 DispatchQueue.global(qos: .background).async {
                     self.fetchData(defaultEndpoint: .equipment_correction) { (correctionResult: Result<[EquipmentJSON], NetworkError>) in
                         switch correctionResult {
+                            
                         case .success(let correctionData):
-                            print("Fetched correctionData: \(correctionData)")
-
                             let updatedEquipmentData = self.updateEquipmentData(mainData: mainEquipmentData, correctionData: correctionData)
                             DispatchQueue.main.async {
                                 completion(.success(updatedEquipmentData))
                             }
+                            
                         case .failure(let error):
                             print("[CorrectionData] - Fetching: \(error.description)")
                             DispatchQueue.main.async {

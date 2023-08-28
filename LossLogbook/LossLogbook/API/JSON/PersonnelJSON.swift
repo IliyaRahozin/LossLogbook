@@ -8,7 +8,8 @@
 import Foundation
 
 // MARK: - EquipmentElement
-struct PersonnelJSON: Codable {
+struct PersonnelJSON: Codable, TableRepresentable {
+    
     var date: String
     var day, personnel: Int
     var equipmentPersonnel: EquipmentPersonnel

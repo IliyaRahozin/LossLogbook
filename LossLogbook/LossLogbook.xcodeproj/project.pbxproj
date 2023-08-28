@@ -24,6 +24,13 @@
 		D0ADC7C82A9A09DF00BB6AF8 /* EquipmentOryxJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7C72A9A09DF00BB6AF8 /* EquipmentOryxJSON.swift */; };
 		D0ADC7CA2A9A0A2000BB6AF8 /* PersonnelJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7C92A9A0A2000BB6AF8 /* PersonnelJSON.swift */; };
 		D0ADC7CD2A9A98AD00BB6AF8 /* PropertyExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7CC2A9A98AD00BB6AF8 /* PropertyExtension.swift */; };
+		D0ADC7D12A9ACB6F00BB6AF8 /* DetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7D02A9ACB6F00BB6AF8 /* DetailCoordinator.swift */; };
+		D0ADC7D62A9ACCC600BB6AF8 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7D52A9ACCC600BB6AF8 /* HomeCollectionViewCell.swift */; };
+		D0ADC7DA2A9B97FB00BB6AF8 /* HomeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7D92A9B97FB00BB6AF8 /* HomeConfigurator.swift */; };
+		D0ADC7DD2A9BA71600BB6AF8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7DC2A9BA71600BB6AF8 /* DetailViewController.swift */; };
+		D0ADC7DF2A9BC64C00BB6AF8 /* DetailConfgiurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7DE2A9BC64C00BB6AF8 /* DetailConfgiurator.swift */; };
+		D0ADC7E12A9BDC4200BB6AF8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7E02A9BDC4200BB6AF8 /* Model.swift */; };
+		D0ADC7E32A9BDCEC00BB6AF8 /* OryxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ADC7E22A9BDCEC00BB6AF8 /* OryxTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +53,13 @@
 		D0ADC7C72A9A09DF00BB6AF8 /* EquipmentOryxJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentOryxJSON.swift; sourceTree = "<group>"; };
 		D0ADC7C92A9A0A2000BB6AF8 /* PersonnelJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonnelJSON.swift; sourceTree = "<group>"; };
 		D0ADC7CC2A9A98AD00BB6AF8 /* PropertyExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyExtension.swift; sourceTree = "<group>"; };
+		D0ADC7D02A9ACB6F00BB6AF8 /* DetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoordinator.swift; sourceTree = "<group>"; };
+		D0ADC7D52A9ACCC600BB6AF8 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0ADC7D92A9B97FB00BB6AF8 /* HomeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConfigurator.swift; sourceTree = "<group>"; };
+		D0ADC7DC2A9BA71600BB6AF8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D0ADC7DE2A9BC64C00BB6AF8 /* DetailConfgiurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailConfgiurator.swift; sourceTree = "<group>"; };
+		D0ADC7E02A9BDC4200BB6AF8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D0ADC7E22A9BDCEC00BB6AF8 /* OryxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OryxTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,7 @@
 				D0ADC7B32A95718300BB6AF8 /* Coordinator */,
 				D0ADC7BC2A98E16D00BB6AF8 /* API */,
 				D0ADC7CB2A9A62D800BB6AF8 /* Model */,
+				D0ADC7D22A9ACC9400BB6AF8 /* View */,
 				D0ADC7A22A95293500BB6AF8 /* ViewControllers */,
 				D0ADC7A92A952E6500BB6AF8 /* Resources */,
 				D0ADC79A2A95257B00BB6AF8 /* Info.plist */,
@@ -102,7 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				D0ADC7AC2A95656400BB6AF8 /* SplashScreen */,
-				D0ADC7902A95257B00BB6AF8 /* HomeViewController.swift */,
+				D0ADC7D82A9B97CE00BB6AF8 /* HomeViewController */,
+				D0ADC7DB2A9BA6F900BB6AF8 /* DetailViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -156,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D0ADC7B72A9572D000BB6AF8 /* BaseCoordinator.swift */,
+				D0ADC7D02A9ACB6F00BB6AF8 /* DetailCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -192,8 +209,52 @@
 		D0ADC7CB2A9A62D800BB6AF8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D0ADC7E02A9BDC4200BB6AF8 /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D0ADC7D22A9ACC9400BB6AF8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADC7E42A9C29A400BB6AF8 /* Configurators */,
+				D0ADC7D72A9ACF3700BB6AF8 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0ADC7D72A9ACF3700BB6AF8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADC7D52A9ACCC600BB6AF8 /* HomeCollectionViewCell.swift */,
+				D0ADC7E22A9BDCEC00BB6AF8 /* OryxTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D0ADC7D82A9B97CE00BB6AF8 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADC7902A95257B00BB6AF8 /* HomeViewController.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		D0ADC7DB2A9BA6F900BB6AF8 /* DetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADC7DC2A9BA71600BB6AF8 /* DetailViewController.swift */,
+			);
+			name = DetailViewController;
+			sourceTree = "<group>";
+		};
+		D0ADC7E42A9C29A400BB6AF8 /* Configurators */ = {
+			isa = PBXGroup;
+			children = (
+				D0ADC7DE2A9BC64C00BB6AF8 /* DetailConfgiurator.swift */,
+				D0ADC7D92A9B97FB00BB6AF8 /* HomeConfigurator.swift */,
+			);
+			path = Configurators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,14 +332,21 @@
 				D0ADC7B62A95728700BB6AF8 /* Coordinator.swift in Sources */,
 				D0ADC7C42A994B7600BB6AF8 /* NetworkError.swift in Sources */,
 				D0ADC7B22A95677400BB6AF8 /* Constant.swift in Sources */,
+				D0ADC7D62A9ACCC600BB6AF8 /* HomeCollectionViewCell.swift in Sources */,
 				D0ADC7912A95257B00BB6AF8 /* HomeViewController.swift in Sources */,
+				D0ADC7DD2A9BA71600BB6AF8 /* DetailViewController.swift in Sources */,
 				D0ADC7C22A994B5A00BB6AF8 /* Endpoint.swift in Sources */,
+				D0ADC7DA2A9B97FB00BB6AF8 /* HomeConfigurator.swift in Sources */,
 				D0ADC7C82A9A09DF00BB6AF8 /* EquipmentOryxJSON.swift in Sources */,
 				D0ADC7CA2A9A0A2000BB6AF8 /* PersonnelJSON.swift in Sources */,
 				D0ADC7CD2A9A98AD00BB6AF8 /* PropertyExtension.swift in Sources */,
 				D0ADC78D2A95257B00BB6AF8 /* AppDelegate.swift in Sources */,
+				D0ADC7E32A9BDCEC00BB6AF8 /* OryxTableViewCell.swift in Sources */,
+				D0ADC7D12A9ACB6F00BB6AF8 /* DetailCoordinator.swift in Sources */,
+				D0ADC7DF2A9BC64C00BB6AF8 /* DetailConfgiurator.swift in Sources */,
 				D0ADC78F2A95257B00BB6AF8 /* SceneDelegate.swift in Sources */,
 				D0ADC7AB2A9556CC00BB6AF8 /* BaseAppExtension.swift in Sources */,
+				D0ADC7E12A9BDC4200BB6AF8 /* Model.swift in Sources */,
 				D0ADC7B82A9572D000BB6AF8 /* BaseCoordinator.swift in Sources */,
 				D0ADC7AE2A95659000BB6AF8 /* SplashScreenViewController.swift in Sources */,
 			);

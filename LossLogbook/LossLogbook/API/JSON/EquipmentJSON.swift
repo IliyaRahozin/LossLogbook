@@ -9,7 +9,8 @@ import Foundation
 
 typealias Equipment = [EquipmentJSON]
 
-struct EquipmentJSON: Codable {
+struct EquipmentJSON: Codable, TableRepresentable {
+    
     var date: String
     var day, aircraft, helicopter, tank: Int?
     var apc, fieldArtillery, mrl: Int?
@@ -57,6 +58,5 @@ extension EquipmentJSON {
         greatestLossesDirection = correction.greatestLossesDirection
         vehiclesAndFuelTanks += correction.vehiclesAndFuelTanks
         mobileSRBMSystem += correction.mobileSRBMSystem
-        // Update other properties similarly
     }
 }

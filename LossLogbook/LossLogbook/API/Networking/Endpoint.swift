@@ -38,7 +38,6 @@ struct Endpoint {
         }
         
         var baseURL: String {
-//            return "https://github.com/MacPaw/2022-Ukraine-Russia-War-Dataset/blob/main/data"
             return "https://raw.githubusercontent.com/MacPaw/2022-Ukraine-Russia-War-Dataset/main/data"
         }
         

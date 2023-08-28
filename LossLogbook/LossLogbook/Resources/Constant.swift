@@ -9,7 +9,10 @@ import UIKit
 
 class Constant {
     class Images {
-        static let SplashScreenLogo = UIImage(named: "PreloaderLogo")
+        static let SplashScreenLogo   = UIImage(named: "PreloaderLogo")
+        static let Personel           = UIImage(named: "personnel")
+        static let VehiclesDestroyed  = UIImage(named: "vehicles-destroyed")
+        static let Donate             = UIImage(named: "donate")
     }
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol BaseCoordinatorFlow {
-    func showDetail(data: Any?)
+    func showDetail(direction: HomeCollectionData)
 }
 
 protocol SplashScreenCoordinatorDelegate: AnyObject {
@@ -35,6 +35,16 @@ class BaseCoordinator: Coordinator {
         initialViewController.coordinator = self
         navigationController.setViewControllers([initialViewController], animated: true)
     }
+    
+    private func showDonate() {
+        if let url = URL(string: "https://savelife.in.ua/donate/") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                print("Cannot open URL")
+            }
+        }
+    }
 }
 
 // MARK: - SplashPresenterDelegate
@@ -46,8 +56,22 @@ extension BaseCoordinator: SplashScreenViewControllerDelegate {
 
 // MARK: - BaseCoordinatorFlow
 extension BaseCoordinator: BaseCoordinatorFlow {
-    func showDetail(data: Any?) {
-        // TODO: - Detail data coordination
-        // go to detail info
+    func showDetail(direction: HomeCollectionData) {
+        switch direction {
+        case .Personnel:
+            let data = Model.shared.getPersonnelData()
+            let detailCoordinator = DetailCoordinator<PersonnelJSON>(navigationController: navigationController, data: data)
+            detailCoordinator.start()
+        case .EquipmentOryx:
+            let data = Model.shared.getequipmentOryxData()
+            let detailCoordinator = DetailCoordinator(navigationController: navigationController, data: data)
+            detailCoordinator.start()
+        case .Equimpent:
+            let data = Model.shared.getEquimpentData()
+            let detailCoordinator = DetailCoordinator(navigationController: navigationController, data: data)
+            detailCoordinator.start()
+        case .Donate:
+            showDonate()
+        }
     }
 }
